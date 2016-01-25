@@ -1,0 +1,8 @@
+{
+    "name": "rfweb/cepaberto",
+    "autoload": {
+        "psr-4": {
+            "Rfweb\\Cepaberto\\": "src/"
+        }
+    }
+}
