@@ -13,6 +13,7 @@ use Rfweb\Cepaberto\Contracts\CepAbertoInterface;
 use Rfweb\Cepaberto\Exceptions\CepAbertoException;
 use GuzzleHttp\Client;
 use Exception;
+use Cache;
 
 class CepAbertoRest extends Controller implements CepAbertoInterface
 {
@@ -43,23 +44,63 @@ class CepAbertoRest extends Controller implements CepAbertoInterface
         }
     }
 
-    public function paises()
+    public function listarPaises()
     {
-
+        return [
+            "BRA" => "Brasil"
+        ];
     }
 
-    public function ufs()
+    public function listarUfs($pais = "BRA")
     {
-
+        $ufs = [
+            "BRA" => [
+                "AC"=>"Acre",
+                "AL"=>"Alagoas",
+                "AM"=>"Amazonas",
+                "AP"=>"Amapá",
+                "BA"=>"Bahia",
+                "CE"=>"Ceará",
+                "DF"=>"Distrito Federal",
+                "ES"=>"Espírito Santo",
+                "GO"=>"Goiás",
+                "MA"=>"Maranhão",
+                "MT"=>"Mato Grosso",
+                "MS"=>"Mato Grosso do Sul",
+                "MG"=>"Minas Gerais",
+                "PA"=>"Pará",
+                "PB"=>"Paraíba",
+                "PR"=>"Paraná",
+                "PE"=>"Pernambuco",
+                "PI"=>"Piauí",
+                "RJ"=>"Rio de Janeiro",
+                "RN"=>"Rio Grande do Norte",
+                "RO"=>"Rondônia",
+                "RS"=>"Rio Grande do Sul",
+                "RR"=>"Roraima",
+                "SC"=>"Santa Catarina",
+                "SE"=>"Sergipe",
+                "SP"=>"São Paulo",
+                "TO"=>"Tocantins"
+            ],
+        ];
+        return $ufs[$pais];
     }
 
-    public function cidades($uf)
+    public function listarCidades($uf)
     {
-        return $this->connect('cities',['estado'=>$uf]);
+        return Cache::remember('cidades'.$uf, config('cepaberto.time-cache'), function() use ($uf) {
+            return $this->connect('cities', ['estado' => $uf]);
+        });
     }
 
-    public function endereco($cep)
+    public function obterEnderecoPorCep($cep)
     {
-        // TODO: Implement endereco() method.
+        return $this->connect('ceps',['cep'=>$cep]);
+    }
+
+    public function obterEnderecoPorLogradouro($uf, $cidade, $logradouro = null, $bairro = null)
+    {
+        return $this->connect('ceps',['estado'=>$uf,'cidade'=>$cidade,'logradouro'=>$logradouro,'bairro'=>$bairro]);
     }
 }

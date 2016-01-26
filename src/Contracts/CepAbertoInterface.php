@@ -11,9 +11,13 @@ namespace Rfweb\Cepaberto\Contracts;
 
 interface CepAbertoInterface
 {
-    public function paises();
+    public function listarPaises();
 
-    public function ufs();
+    public function listarUfs();
 
-    public function endereco($cep);
+    public function listarCidades($uf);
+
+    public function obterEnderecoPorCep($cep);
+
+    public function obterEnderecoPorLogradouro($uf, $cidade, $logradouro=null, $bairro = null);
 }
