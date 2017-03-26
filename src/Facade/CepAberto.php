@@ -1,5 +1,5 @@
 <?php
-namespace Cepaberto\Cepaberto\Facade;
+namespace RobersonFaria\Cepaberto\Facade;
 
 use Illuminate\Support\Facades\Facade;
 

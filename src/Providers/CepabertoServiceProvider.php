@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: roberson.faria
- * Date: 25/01/16
- * Time: 16:55
- */
-
 namespace RobersonFaria\Cepaberto\Providers;
 
 use Illuminate\Foundation\AliasLoader;
