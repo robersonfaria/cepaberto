@@ -1,7 +1,6 @@
 <?php
 namespace RobersonFaria\Cepaberto\Providers;
 
-use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 
 class CepabertoServiceProvider extends ServiceProvider
