@@ -3,7 +3,6 @@ namespace RobersonFaria\Cepaberto\Providers;
 
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
-use Rfweb\Cepaberto\Facade\CepAberto;
 
 class CepabertoServiceProvider extends ServiceProvider
 {
@@ -17,9 +16,6 @@ class CepabertoServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../config/cepaberto.php' => config_path('cepaberto.php'),
         ], 'config');
-
-        $loader = AliasLoader::getInstance();
-        $loader->alias('CepAberto', CepAberto::class);
 
     }
 
