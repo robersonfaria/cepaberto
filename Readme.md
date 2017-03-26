@@ -1,8 +1,8 @@
-#CepAberto Package
+# CepAberto Package
 
 Pacote Laravel para consulta de ceps no [CepAberto](http://cepaberto.com/)
 
-##Instalação
+## Instalação
 
 ##### Instale a dependencia pelo composer
 ```bash
