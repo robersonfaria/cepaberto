@@ -21,7 +21,6 @@ class CepabertoServiceProvider extends ServiceProvider
         $loader = AliasLoader::getInstance();
         $loader->alias('CepAberto', CepAberto::class);
 
-        require(__DIR__."/../Http/routes.php");
     }
 
     /**
