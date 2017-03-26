@@ -1,21 +1,13 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: roberson.faria
- * Date: 25/01/16
- * Time: 16:57
- */
+namespace RobersonFaria\Cepaberto;
 
-namespace Rfweb\Cepaberto;
-
-use Illuminate\Routing\Controller;
-use Rfweb\Cepaberto\Contracts\CepAbertoInterface;
-use Rfweb\Cepaberto\Exceptions\CepAbertoException;
+use RobersonFaria\Cepaberto\Contracts\CepAbertoInterface;
+use RobersonFaria\Cepaberto\Exceptions\CepAbertoException;
 use GuzzleHttp\Client;
 use Exception;
 use Cache;
 
-class CepAbertoRest extends Controller implements CepAbertoInterface
+class CepAberto implements CepAbertoInterface
 {
     protected function connect($service,$args = []){
         try {

@@ -1,12 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: roberson.faria
- * Date: 25/01/16
- * Time: 17:04
- */
-
-namespace Rfweb\Cepaberto\Exceptions;
+namespace RobersonFaria\Cepaberto\Exceptions;
 
 use Exception;
 

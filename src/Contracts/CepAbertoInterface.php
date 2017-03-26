@@ -1,12 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: roberson.faria
- * Date: 25/01/16
- * Time: 17:01
- */
-
-namespace Rfweb\Cepaberto\Contracts;
+namespace RobersonFaria\Cepaberto\Contracts;
 
 
 interface CepAbertoInterface

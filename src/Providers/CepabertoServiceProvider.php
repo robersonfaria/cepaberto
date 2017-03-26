@@ -6,7 +6,7 @@
  * Time: 16:55
  */
 
-namespace Rfweb\Cepaberto\Providers;
+namespace RobersonFaria\Cepaberto\Providers;
 
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
@@ -42,6 +42,6 @@ class CepabertoServiceProvider extends ServiceProvider
             __DIR__.'/../config/cepaberto.php', 'cepaberto'
         );
 
-        $this->app->bind('cepaberto', 'Rfweb\Cepaberto\CepAbertoRest' );
+        $this->app->bind('cepaberto', 'RobersonFaria\Cepaberto\CepAberto' );
     }
 }
