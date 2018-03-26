@@ -1,7 +1,9 @@
 <?php
 return [
     /**
-     * Tempo em milisegundos que o cache irá ser persistido.
+     * Tempo em minutos que o cache irá ser persistido.
+     * Default: 1440 min = 24 horas
+     * para inativar o cache basta informar 0 ou null nessa configuração
      */
     "time-cache" => 1440,
 
@@ -12,15 +14,12 @@ return [
      *
      * ATENÇÂO: O pacote está preparado para trabalhar com a versão que vem configurado na URL do serviço, alterar a versão na URL pode causar erros no pacote
      */
-    "url-service" => [
-        "ceps" => "http://www.cepaberto.com/api/v2/ceps.json",
-        "cities" => "http://www.cepaberto.com/api/v2/cities.json"
-    ],
+    "host" => "http://www.cepaberto.com/api/v3/",
 
     /**
      * Token
      *
      * O token deve ser gerado no site CEP Aberto (http://www.cepaberto.com). Para ter o seu token basta se cadastrar e acessar o menu API -> Token de Acesso
      */
-    "token" => "",
+    "token" => env("TOKEN_CEPABERTO"),
 ];

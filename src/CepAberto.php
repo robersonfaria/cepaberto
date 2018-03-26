@@ -12,7 +12,7 @@ class CepAberto implements CepAbertoInterface
     protected function connect($service,$args = []){
         try {
             $client = new Client();
-            $url = config('cepaberto.url-service')[$service] . "?" . http_build_query($args) ;
+            $url = config('cepaberto.host') . $service . "/" . "?" . http_build_query($args) ;
             $response = $client->request('GET', $url,
                 [
                     'headers' => [
@@ -22,6 +22,7 @@ class CepAberto implements CepAbertoInterface
             $content = $response->getBody()->getContents();
             return json_decode($content);
         }catch (Exception $e){
+            report($e);
             switch($e->getCode()){
                 case 500:
                     throw new CepAbertoException('Erro ao consultar serviço rest do NeoCep.',500);
@@ -81,18 +82,23 @@ class CepAberto implements CepAbertoInterface
 
     public function listarCidades($uf)
     {
-        return Cache::remember('cidades'.$uf, config('cepaberto.time-cache'), function() use ($uf) {
+        return cache()->remember('cidades'.$uf, config('cepaberto.time-cache'), function() use ($uf) {
             return $this->connect('cities', ['estado' => $uf]);
         });
     }
 
     public function obterEnderecoPorCep($cep)
     {
-        return $this->connect('ceps',['cep'=>$cep]);
+        return $this->connect('cep',['cep'=>$cep]);
     }
 
     public function obterEnderecoPorLogradouro($uf, $cidade, $logradouro = null, $bairro = null)
     {
-        return $this->connect('ceps',['estado'=>$uf,'cidade'=>$cidade,'logradouro'=>$logradouro,'bairro'=>$bairro]);
+        return $this->connect('address',['estado'=>$uf,'cidade'=>$cidade,'logradouro'=>$logradouro,'bairro'=>$bairro]);
+    }
+
+    public function obterGeo($lat,$lng)
+    {
+        return $this->connect('nearest',['lat'=>$lat,'lng'=>$lng]);
     }
 }

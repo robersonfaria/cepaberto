@@ -1,5 +1,9 @@
 {
     "name": "robersonfaria/cepaberto",
+    "description": "Pacote Laravel para consultas de CEP e endereços - API Cep Aberto.",
+    "keywords": ["CEP", "Endereço", "CEP Aberto", "laravel"],
+    "license": "MIT",
+    "type": "Package",
     "autoload": {
         "classmap": [
             "src/"
@@ -7,5 +11,15 @@
     },
     "require": {
         "guzzlehttp/guzzle": "^6.1"
-    }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "RobersonFaria\\Cepaberto\\Providers\\CepabertoServiceProvider"
+            ],
+            "aliases": {
+                "CepAberto": "RobersonFaria\\Cepaberto\\Facade\\CepAberto"
+            }
+        }
+    },
 }
